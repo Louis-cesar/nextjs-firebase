@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+}
+.nav {
+  background-color: #222222;
+  height: 95vh;
+  width: 250px;
+}
+.list {
+  list-style: none;
+  margin: 10px;
+  padding: 0;
+}
+
+.list li {
+  margin: 20px;
+  padding: 5px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.list li:hover {
+  background-color: goldenrod;
+  color: #222222;
+  border-radius: 5px;
+}
+.admin {
+  color: #ffffff;
+  margin: 10px;
+}

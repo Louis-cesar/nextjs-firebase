@@ -1,0 +1,83 @@
+.container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.main {
+  background-color: white;
+  height: 500px;
+  width: 400px;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 20px;
+}
+
+.header {
+  background-color: rgb(231, 168, 7);
+  padding: 15px;
+  color: white;
+  margin: 0;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  margin: 20px;
+}
+.email {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid rgb(231, 168, 7);
+  font-size: 0.75rem;
+  color: grey;
+}
+
+.email:focus {
+  outline: none;
+  border: 1px solid rgb(231, 168, 7);
+}
+.password {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid rgb(231, 168, 7);
+}
+
+.password:focus {
+  outline: none;
+  border: 1px solid rgb(231, 168, 7);
+}
+
+.label1 {
+  font-size: 0.75rem;
+  color: grey;
+}
+.label {
+  font-size: 0.75rem;
+  color: grey;
+}
+
+.btn {
+  padding: 10px;
+  margin: 5px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: rgb(231, 168, 7);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.forgot {
+  text-align: center;
+  cursor: pointer;
+  margin: 0px;
+  font-size: 0.75rem;
+}
