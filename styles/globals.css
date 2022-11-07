@@ -24,4 +24,10 @@ a {
     color: white;
     background: black;
   }
+
+  @media all and (max-width: 300px) {
+    .body {
+      width: 40vw;
+    }
+  }
 }

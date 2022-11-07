@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../lib/firebase";
 
@@ -34,8 +35,13 @@ export const AuthContextProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  const logout = async () => {
+    setUser(null);
+    await signOut(auth);
+  };
+
   return (
-    <AuthContext.Provider value={{ User, signup }}>
+    <AuthContext.Provider value={{ User, signup, logout }}>
       {loading ? null : children}
     </AuthContext.Provider>
   );

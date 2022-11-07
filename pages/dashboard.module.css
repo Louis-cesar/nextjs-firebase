@@ -4,7 +4,7 @@
 .nav {
   background-color: #222222;
   height: 95vh;
-  width: 250px;
+  width: 220px;
 }
 .list {
   list-style: none;
@@ -26,7 +26,78 @@
   color: #222222;
   border-radius: 5px;
 }
+.dashboard {
+  display: flex;
+  flex-direction: column;
+}
 .admin {
-  color: #ffffff;
-  margin: 10px;
+  color: goldenrod;
+  margin: 0;
+  margin-left: 30px;
+}
+
+.box {
+  background-color: #222222;
+  height: 80vh;
+  width: 80vw;
+  margin: 30px;
+}
+
+@media all and (max-width: 500px) {
+  .nav {
+    display: none;
+  }
+  .admin {
+    display: none;
+  }
+  .container {
+    width: 50vw;
+  }
+}
+
+.listTitle {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  padding: 10px;
+  background-color: #111111;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.employee {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background-color: white;
+  color: black;
+  text-align: center;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.employees {
+  font-size: 1rem;
+}
+
+.btnemployees {
+  background-color: goldenrod;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+  width: 60px;
+  margin: 0 5px;
+}
+.active {
+  color: green;
+}
+.btnemployees2 {
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+  width: 60px;
 }
