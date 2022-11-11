@@ -1,0 +1,75 @@
+.custom {
+  background-color: #373737;
+  top: 35%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-left: 40%;
+  margin-top: 15%;
+  height: 400px;
+  width: 400px;
+  border-radius: 20px;
+}
+
+.header {
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+.label {
+  font-size: 1rem;
+  color: white;
+  align-self: flex-start;
+  margin-left: 20px;
+}
+
+.name {
+  padding: 8px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #373737;
+  font-size: 0.75rem;
+  color: grey;
+  width: 300px;
+  font-size: 0.75em;
+}
+.btn {
+  margin-top: 10px;
+}
+
+.btnsave {
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.btnsave:hover {
+  opacity: 0.8;
+}
+
+.btnClose {
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.btnClose:hover {
+  opacity: 0.8;
+}

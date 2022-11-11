@@ -78,9 +78,12 @@
 .employees {
   font-size: 1rem;
 }
+.active {
+  color: green;
+}
 
 .btnemployees {
-  background-color: goldenrod;
+  background-color: #03ec03;
   color: white;
   border: none;
   cursor: pointer;
@@ -89,9 +92,11 @@
   width: 60px;
   margin: 0 5px;
 }
-.active {
-  color: green;
+.btnemployees:hover,
+.btnemployees:focus {
+  background-color: #0bad06;
 }
+
 .btnemployees2 {
   background-color: red;
   color: white;
@@ -100,4 +105,8 @@
   border-radius: 5px;
   padding: 5px;
   width: 60px;
+}
+.btnemployees2:hover,
+.btnemployees:focus {
+  background-color: #c00404;
 }

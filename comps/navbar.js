@@ -31,7 +31,7 @@ const Navbar = () => {
                     router.push("/login");
                   }}
                 >
-                  Logout
+                  <li>Logout</li>
                 </Link>
               </>
             ) : (
