@@ -5,6 +5,12 @@ import { db } from "../lib/firebase";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { useAuth } from "../context/AuthContext";
 
+const customStyles = {
+  overlay: {
+    background: "transparent",
+  },
+};
+
 const Edit = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [fullName, setfullName] = useState("");
@@ -20,15 +26,22 @@ const Edit = () => {
       timeStamp: serverTimestamp(),
     });
     console.log(res, db);
+    window.location.reload();
   };
 
   return (
     <div>
-      <button onClick={() => setModalIsOpen(true)}>Update Profile</button>
+      <button
+        onClick={() => setModalIsOpen(true)}
+        className={styles.updateProfile}
+      >
+        Update Profile
+      </button>
 
       <Modal
         isOpen={modalIsOpen}
         className={styles.custom}
+        style={customStyles}
         onRequestClose={() => setModalIsOpen(false)}
         arialHideApp={true}
       >

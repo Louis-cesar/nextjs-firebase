@@ -9,6 +9,7 @@
   height: 400px;
   width: 400px;
   border-radius: 20px;
+  border: solid 1px white;
 }
 
 .header {
@@ -16,6 +17,16 @@
   color: white;
   margin: 0;
   padding: 10px;
+}
+.updateProfile {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: goldenrod;
+  color: white;
+}
+.updateProfile:hover {
+  opacity: 0.8;
 }
 
 .form {

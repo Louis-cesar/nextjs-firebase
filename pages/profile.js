@@ -1,7 +1,26 @@
 import styles from "./profile.module.css";
 import Image from "next/image";
 import Edit from "./edit";
+import { useAuth } from "../context/AuthContext";
+import { useEffect, useState } from "react";
+import { getDoc, doc } from "firebase/firestore";
+import { db, auth } from "../lib/firebase";
 const Profile = () => {
+  const { User } = useAuth();
+  const [data, setData] = useState(null);
+  const currentUser = auth.currentUser;
+  console.log("data", data);
+
+  useEffect(() => {
+    (async () => {
+      if (currentUser) {
+        const docRef = doc(db, "Users", currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        setData(docSnap.data());
+      }
+    })();
+  }, [currentUser]);
+
   return (
     <div className={styles.container}>
       <h2 className={styles.header}>Employee Profile</h2>
@@ -23,10 +42,10 @@ const Profile = () => {
 
           <div className={styles.listItem}>
             <ul className={styles.list}>
-              <li>Name:</li>
-              <li>Address:</li>
-              <li>Email:</li>
-              <li>Phone:</li>
+              <li>FullName: {data?.fullName}</li>
+              <li>Address: {data?.address}</li>
+              <li>Email: {User?.email}</li>
+              <li>PhoneNumber: {data?.phoneNumber}</li>
               <li>Date of Birth:</li>
               <li>Gender:</li>
             </ul>

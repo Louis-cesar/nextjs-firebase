@@ -2,15 +2,29 @@ import styles from "./login.module.css";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
-import { async } from "@firebase/util";
+
+//toast
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const router = useRouter();
   const { login } = useAuth();
   const [data, setData] = useState({ email: "", password: "" });
 
-  const handlelogin = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    toast.success("Log Successful!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
     try {
       const result = await login(data.email, data.password);
       if (result) {
@@ -18,6 +32,16 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
+      // toast.error("Enter a valid Email!", {
+      //   position: "top-center",
+      //   autoClose: 3000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "dark",
+      // });
     }
   };
 
@@ -26,7 +50,7 @@ const Login = () => {
       <div className={styles.main}>
         <h1 className={styles.header}>Login</h1>
         <div className={styles.formLgn}>
-          <form className={styles.form} onSubmit={handlelogin}>
+          <form className={styles.form}>
             <label htmlFor="email" className={styles.label}>
               Email
             </label>
@@ -47,7 +71,7 @@ const Login = () => {
               className={styles.password}
               onChange={(e) => setData({ ...data, password: e.target.value })}
             />
-            <button type="submit" className={styles.btn}>
+            <button type="submit" className={styles.btn} onClick={handleLogin}>
               Login
             </button>
             <div className={styles.forgotBtn}>
@@ -56,6 +80,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

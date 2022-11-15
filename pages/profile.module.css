@@ -39,7 +39,6 @@
   font-size: 0.8rem;
 }
 .box {
-  background-color: aliceblue;
   width: 75%;
   margin: 70px 0;
   border-radius: 10px;
@@ -62,7 +61,7 @@
 .listItem {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  background-color: #373737;
 }
 .list {
   display: flex;
@@ -77,10 +76,13 @@
   margin: 15px;
   font-size: 0.8rem;
   font-weight: bold;
-  background-color: #dddbdb;
+  background: none;
   padding: 10px;
-  border-radius: 10px;
+  color: white;
+  border-bottom: solid 1px #222222;
+  outline: none;
 }
 .edit {
   text-align: center;
+  padding: 20px;
 }
