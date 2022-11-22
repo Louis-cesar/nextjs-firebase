@@ -6,21 +6,7 @@ import { useEffect, useState } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { db, auth } from "../lib/firebase";
 const Profile = () => {
-  const { User } = useAuth();
-  const [data, setData] = useState(null);
-  const currentUser = auth.currentUser;
-  console.log("data", data);
-
-  useEffect(() => {
-    (async () => {
-      if (currentUser) {
-        const docRef = doc(db, "Users", currentUser.uid);
-        const docSnap = await getDoc(docRef);
-        setData(docSnap.data());
-      }
-    })();
-  }, [currentUser]);
-
+  const { user } = useAuth();
   return (
     <div className={styles.container}>
       <h2 className={styles.header}>Employee Profile</h2>
@@ -32,7 +18,7 @@ const Profile = () => {
             height={100}
             className={styles.img}
           />
-          <h3 className={styles.name}>Louis Cesar</h3>
+          <h3 className={styles.name}> {user?.fullName}</h3>
           <p className={styles.position}>FullStack Developer</p>
         </div>
         <div className={styles.box}>
@@ -42,12 +28,11 @@ const Profile = () => {
 
           <div className={styles.listItem}>
             <ul className={styles.list}>
-              <li>FullName: {data?.fullName}</li>
-              <li>Address: {data?.address}</li>
-              <li>Email: {User?.email}</li>
-              <li>PhoneNumber: {data?.phoneNumber}</li>
-              <li>Date of Birth:</li>
-              <li>Gender:</li>
+              <li>Email: {user?.email}</li>
+              <li>Address: {user?.address}</li>
+              <li>PhoneNumber: {user?.phoneNumber}</li>
+              <li>Date of Birth: {user?.dateOfBirth}</li>
+              <li>Gender: {user?.gender}</li>
             </ul>
           </div>
           <div className={styles.edit}>

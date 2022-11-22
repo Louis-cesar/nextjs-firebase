@@ -24,38 +24,34 @@ const Signin = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.main}>
-        <h1 className={styles.header}>Sign Up</h1>
-        <div className={styles.formLgn}>
-          <form className={styles.form} onSubmit={handleSignup}>
-            <label htmlFor="email" className={styles.label}>
-              Email
-            </label>
+      <form className={styles.form} onSubmit={handleSignup}>
+        <h1 className={styles.header1}>Sign Up</h1>
+        <div className={styles.Label}>
+          <div className={styles.input}>
             <input
               type="email"
               name="email"
               id="email"
+              placeholder="Email"
               onChange={(e) => setData({ ...data, email: e.target.value })}
               className={styles.email}
             />
-            <label htmlFor="password" className={styles.label}>
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              onChange={(e) => setData({ ...data, password: e.target.value })}
-              className={styles.password}
-            />
-            <div>
-              <button type="submit" className={styles.btn}>
-                Sign Up
-              </button>
-            </div>
-          </form>
+          </div>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            onChange={(e) => setData({ ...data, password: e.target.value })}
+            className={styles.password}
+          />
+          <div>
+            <button type="submit" className={styles.btn}>
+              Sign Up
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

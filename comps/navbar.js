@@ -4,7 +4,7 @@ import styles from "./navbar.module.css";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
-  const { User, logout } = useAuth();
+  const { user, logout } = useAuth();
   const router = useRouter();
   return (
     <div className={styles.container}>
@@ -14,38 +14,36 @@ const Navbar = () => {
             Tekswipe <span className={styles.color}>Company</span>
           </p>
         </Link>
-        <div className={styles.nav}>
-          <ul className={styles.list}>
-            {User ? (
-              <>
-                <Link href="/dashboard">
-                  <li>Admin</li>
-                </Link>
-                <Link href="/profile">
-                  <li>Profile</li>
-                </Link>
-                <Link
-                  href={"/login"}
-                  onClick={() => {
-                    logout();
-                    router.push("/login");
-                  }}
-                >
-                  <li>Logout</li>
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link href="/login">
-                  <li>Login</li>
-                </Link>
-                <Link href="/signup">
-                  <li>Sign Up</li>
-                </Link>
-              </>
-            )}
-          </ul>
-        </div>
+        <ul className={styles.list}>
+          {user ? (
+            <>
+              <Link href="/dashboard">
+                <li>Admin</li>
+              </Link>
+              <Link href="/profile">
+                <li>Profile</li>
+              </Link>
+              <Link
+                href={"/login"}
+                onClick={() => {
+                  logout();
+                  router.push("/login");
+                }}
+              >
+                <li>Logout</li>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/login">
+                <li>Login</li>
+              </Link>
+              <Link href="/signup">
+                <li>Sign Up</li>
+              </Link>
+            </>
+          )}
+        </ul>
       </div>
     </div>
   );

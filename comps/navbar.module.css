@@ -1,35 +1,47 @@
 .container {
   background-color: #111111;
+  height: 50px;
+  width: 100%;
   color: white;
-  height: 40px;
-  font-size: 0.9rem;
-  width: 100vw;
+  font-size: 1rem;
 }
 .main {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  height: 100%;
 }
 .header {
+  font-size: 1rem;
+  font-weight: bold;
   margin-left: 20px;
 }
 
 .list {
   display: flex;
+  align-items: center;
   list-style: none;
+  margin: 0;
+  padding: 0;
   margin-right: 20px;
 }
 .list li:hover {
-  margin: 0 10px;
   color: goldenrod;
-
-  border-radius: 5px;
 }
 .list li {
-  margin: 0 10px;
-  cursor: pointer;
+  margin: 0 0 0 20px;
+  color: white;
 }
 .color {
   color: goldenrod;
+}
+
+@media all and (max-width: 800px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media all and (min-width: 375px) {
+  .container {
+    width: 100%;
+  }
 }

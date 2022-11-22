@@ -86,3 +86,39 @@
   text-align: center;
   padding: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .main {
+    width: 90%;
+  }
+  .container1 {
+    margin: 0;
+  }
+  .box {
+    width: 100%;
+  }
+  .list {
+    margin: 0;
+  }
+  .list li {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main {
+    width: 90%;
+  }
+  .container1 {
+    margin: 0;
+  }
+  .box {
+    width: 100%;
+  }
+  .list {
+    margin: 0;
+  }
+  .list li {
+    margin: 0;
+  }
+}

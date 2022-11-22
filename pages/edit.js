@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import { useState } from "react";
 import styles from "./edit.module.css";
-import { db } from "../lib/firebase";
+import { db, auth } from "../lib/firebase";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { useAuth } from "../context/AuthContext";
 
@@ -16,13 +16,18 @@ const Edit = () => {
   const [fullName, setfullName] = useState("");
   const [address, setAddress] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
-  const { User } = useAuth();
+  const [gender, setGender] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const { user } = useAuth();
 
   const submit = async (e) => {
-    const res = await setDoc(doc(db, "Users", User.uid), {
+    const res = await setDoc(doc(db, "Users", user.uid), {
       fullName: fullName,
       address: address,
+      gender: gender,
+      dateOfBirth: dateOfBirth,
       phoneNumber: phoneNumber,
+
       timeStamp: serverTimestamp(),
     });
     console.log(res, db);
@@ -80,6 +85,27 @@ const Edit = () => {
             value={phoneNumber}
             onChange={({ target }) => setphoneNumber(target?.value)}
           />
+
+          <label className={styles.label}>Date of Birth:</label>
+          <input
+            type="text"
+            name="contact"
+            placeholder="Enter Date of Birth"
+            className={styles.name}
+            value={dateOfBirth}
+            onChange={({ target }) => setDateOfBirth(target?.value)}
+          />
+
+          <label className={styles.label}>Gender:</label>
+          <input
+            type="text"
+            name="contact"
+            placeholder="Enter Date of Birth"
+            className={styles.name}
+            value={gender}
+            onChange={({ target }) => setGender(target?.value)}
+          />
+
           <div className={styles.btn}>
             <button
               className={styles.btnClose}
