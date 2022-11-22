@@ -18,6 +18,7 @@ const Edit = () => {
   const [phoneNumber, setphoneNumber] = useState("");
   const [gender, setGender] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
+  const [department, setDepartment] = useState("");
   const { user } = useAuth();
 
   const submit = async (e) => {
@@ -27,6 +28,7 @@ const Edit = () => {
       gender: gender,
       dateOfBirth: dateOfBirth,
       phoneNumber: phoneNumber,
+      department: department,
 
       timeStamp: serverTimestamp(),
     });
@@ -88,8 +90,8 @@ const Edit = () => {
 
           <label className={styles.label}>Date of Birth:</label>
           <input
-            type="text"
-            name="contact"
+            type="date"
+            name="dateOfBirth"
             placeholder="Enter Date of Birth"
             className={styles.name}
             value={dateOfBirth}
@@ -100,10 +102,20 @@ const Edit = () => {
           <input
             type="text"
             name="contact"
-            placeholder="Enter Date of Birth"
+            placeholder="Enter Gender"
             className={styles.name}
             value={gender}
             onChange={({ target }) => setGender(target?.value)}
+          />
+
+          <label className={styles.label}>Department:</label>
+          <input
+            type="text"
+            name="contact"
+            placeholder="Enter Department"
+            className={styles.name}
+            value={department}
+            onChange={({ target }) => setDepartment(target?.value)}
           />
 
           <div className={styles.btn}>

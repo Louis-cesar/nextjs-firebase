@@ -32,6 +32,7 @@ export const AuthContextProvider = ({ children }) => {
             phoneNumber: userDoc.phoneNumber,
             dateOfBirth: userDoc.dateOfBirth,
             gender: userDoc.gender,
+            department: userDoc.department,
           });
         });
       } else {
