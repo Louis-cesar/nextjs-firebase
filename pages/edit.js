@@ -2,7 +2,7 @@ import Modal from "react-modal";
 import { useState } from "react";
 import styles from "./edit.module.css";
 import { db, auth } from "../lib/firebase";
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useAuth } from "../context/AuthContext";
 
 const customStyles = {
@@ -22,15 +22,14 @@ const Edit = () => {
   const { user } = useAuth();
 
   const submit = async (e) => {
-    const res = await setDoc(doc(db, "Users", user.uid), {
+    const res = await updateDoc(doc(db, "Users", user.uid), {
       fullName: fullName,
       address: address,
       gender: gender,
       dateOfBirth: dateOfBirth,
       phoneNumber: phoneNumber,
       department: department,
-
-      timeStamp: serverTimestamp(),
+      isAdmin: false,
     });
     console.log(res, db);
     window.location.reload();

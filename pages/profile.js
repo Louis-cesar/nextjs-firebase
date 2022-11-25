@@ -19,7 +19,6 @@ const Profile = () => {
         />
         <h3 className={styles.name}> {user?.fullName}</h3>
         <p className={styles.position}>{user?.department}</p>
-
         <div className={styles.box}>
           <div className={styles.box1}>
             <h4 className={styles.header1}>Personal Details</h4>

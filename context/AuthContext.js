@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth, db } from "../lib/firebase";
-import { doc, getDoc, serverTimestamp } from "firebase/firestore";
+import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import Cookies from "js-cookie";
 
 const AuthContext = createContext({});
@@ -43,8 +43,12 @@ export const AuthContextProvider = ({ children }) => {
     return () => unsubscribe;
   }, []);
 
-  const signup = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+  const signup = async (email, password) => {
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+    Cookies.set("token", result.user.uid);
+    const res = await setDoc(doc(db, "Users", result.user.uid), {
+      timeStamp: serverTimestamp(),
+    });
   };
 
   const logout = async () => {
@@ -55,8 +59,8 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const result = await signInWithEmailAndPassword(auth, email, password);
-    Cookies.set("token", result.user.uid);
-    return result;
+    Cookies.set("token", result.user.accessToken);
+    return result.user;
   };
 
   return (
