@@ -29,6 +29,8 @@ const Edit = () => {
       dateOfBirth: dateOfBirth,
       phoneNumber: phoneNumber,
       department: department,
+      userId: user.uid,
+      email: user.email,
       isAdmin: false,
     });
     console.log(res, db);

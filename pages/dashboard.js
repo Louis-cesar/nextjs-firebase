@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { useState, useEffect } from "react";
 import { db } from "../lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
+
 import Link from "next/link";
 
 const Dashboard = () => {
@@ -44,29 +45,33 @@ const Dashboard = () => {
           <li>Progress</li>
         </ul>
       </nav>
-      <div className={styles.dashboard}>
+
+      <div className={styles.table}>
         <h2 className={styles.admin}>Admin Dashboard</h2>
-        <div className={styles.box}>
-          <div className={styles.listTitle}>
-            <div className={styles.title}>User ID</div>
-            <div className={styles.title}>Name</div>
-            <div className={styles.title}>Department</div>
-            <div className={styles.title}>At Work</div>
-            <div className={styles.title}>Status</div>
-            <div className={styles.title}>Actions</div>
-          </div>
-          <div className={styles.employee}>
-            <div className={styles.employees}>{user?.uid}</div>
-            <div className={styles.employees}>{user?.fullName}</div>
-            <div className={styles.employees}>{user?.department}</div>
-            <div className={styles.employees}>8 Months</div>
-            <div className={styles.active}>Active</div>
-            <div className={styles.btn}>
-              <button className={styles.btnemployees}>Edit</button>
-              <button className={styles.btnemployees2}>Delete</button>
-            </div>
-          </div>
+        <div className={styles.details}>
+          <div className={styles.title}>User ID</div>
+          <div className={styles.title}>Name</div>
+          <div className={styles.title}>Department</div>
+          <div className={styles.title}>Status</div>
+          <div className={styles.title}>Email</div>
+          <div className={styles.title}>Actions</div>
         </div>
+        {users?.map((u, i) => {
+          return (
+            <div className={styles.listItem} key={i}>
+              <div className={styles.item}>{u.userId}</div>
+              <div className={styles.item}>{u.fullName}</div>
+              <div className={styles.item}>{u.department}</div>
+
+              <div className={styles.item}>Active</div>
+              <div className={styles.item}>{u.email}</div>
+              <div className={styles.btn}>
+                <button className={styles.button}>Edit</button>
+                <button className={styles.button}>Delete</button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
