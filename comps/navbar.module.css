@@ -16,14 +16,17 @@
   font-weight: bold;
   margin-left: 20px;
 }
+.email {
+  margin-left: 20px;
+}
 
 .list {
   display: flex;
   align-items: center;
   list-style: none;
-  margin: 0;
+
   padding: 0;
-  margin-right: 20px;
+  margin-right: 30px;
 }
 .list li:hover {
   color: goldenrod;

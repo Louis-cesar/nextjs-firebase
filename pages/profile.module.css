@@ -7,19 +7,23 @@
   flex-wrap: column wrap;
 }
 .header {
+  align-self: flex-start;
   color: white;
   margin: 0;
+  margin-left: 40px;
+  font-size: 1.25em;
 }
 .main {
   background-color: #222222;
   height: 80vh;
-  width: 60%;
+  width: 100%;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  margin-left: 4%;
 }
 
 .img {

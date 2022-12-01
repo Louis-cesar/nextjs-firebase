@@ -20,9 +20,7 @@ const Navbar = () => {
               <Link href="/dashboard">
                 <li>Admin</li>
               </Link>
-              <Link href="/profile">
-                <li>Profile</li>
-              </Link>
+              <div className={styles.email}>{user?.email}</div>
               <Link
                 href={"/login"}
                 onClick={() => {

@@ -8,10 +8,6 @@ import { ToastContainer } from "react-toastify";
 const noAthRequired = ["/login", "/signup"];
 
 function MyApp({ Component, pageProps }) {
-  if (Component.getLayout) {
-    return Component.getLayout(<Component {...pageProps} />);
-  }
-
   const router = useRouter();
   return (
     <AuthContextProvider>

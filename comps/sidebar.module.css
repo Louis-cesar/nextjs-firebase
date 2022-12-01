@@ -1,0 +1,20 @@
+.list {
+  padding: 8px;
+  margin: 15px;
+  background-color: #222222;
+  list-style: none;
+  display: flex;
+  text-align: center;
+  padding-top: 5px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.list:hover,
+.list:focus {
+  background-color: goldenrod;
+  color: #222222;
+  border-radius: 5px;
+  transition: 0.5s;
+}

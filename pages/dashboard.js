@@ -5,6 +5,8 @@ import { db } from "../lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 import Link from "next/link";
+import AdminUpdate from "./adminUpdate";
+import SidebarLayout from "../comps/sidebarLayout";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -34,19 +36,8 @@ const Dashboard = () => {
   // }, []);
 
   return (
-    <div className={styles.container}>
-      <nav className={styles.nav}>
-        <ul className={styles.list}>
-          <li>Dashboard</li>
-          <Link href="/profile">
-            <li>Profile</li>
-          </Link>
-          <li>Diary</li>
-          <li>Progress</li>
-        </ul>
-      </nav>
-
-      <div className={styles.table}>
+    <SidebarLayout>
+      <div className={styles.container}>
         <h2 className={styles.admin}>Admin Dashboard</h2>
         <div className={styles.details}>
           <div className={styles.title}>User ID</div>
@@ -56,24 +47,26 @@ const Dashboard = () => {
           <div className={styles.title}>Email</div>
           <div className={styles.title}>Actions</div>
         </div>
-        {users?.map((u, i) => {
-          return (
-            <div className={styles.listItem} key={i}>
-              <div className={styles.item}>{u.userId}</div>
-              <div className={styles.item}>{u.fullName}</div>
-              <div className={styles.item}>{u.department}</div>
-
-              <div className={styles.item}>Active</div>
-              <div className={styles.item}>{u.email}</div>
-              <div className={styles.btn}>
-                <button className={styles.button}>Edit</button>
-                <button className={styles.button}>Delete</button>
+        <div>
+          {users?.map((u, i) => {
+            return (
+              <div className={styles.listItem} key={i}>
+                <div className={styles.item}>{u.userId}</div>
+                <div className={styles.item}>{u.fullName}</div>
+                <div className={styles.item}>{u.department}</div>
+                <div className={styles.item}>{u.email}</div>
+                <div className={styles.btn}>
+                  <button className={styles.button}>
+                    <AdminUpdate />
+                  </button>
+                  <button className={styles.button1}>Delete</button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </SidebarLayout>
   );
 };
 
