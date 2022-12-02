@@ -69,6 +69,7 @@ const Edit = () => {
             className={styles.name}
             value={fullName}
             onChange={({ target }) => setfullName(target?.value)}
+            required
           />
           <label className={styles.label}>Address:</label>
           <input
@@ -78,6 +79,7 @@ const Edit = () => {
             className={styles.name}
             value={address}
             onChange={({ target }) => setAddress(target?.value)}
+            required
           />
           <label className={styles.label}>Contact:</label>
           <input
@@ -87,6 +89,7 @@ const Edit = () => {
             className={styles.name}
             value={phoneNumber}
             onChange={({ target }) => setphoneNumber(target?.value)}
+            required
           />
 
           <label className={styles.label}>Date of Birth:</label>
@@ -97,6 +100,7 @@ const Edit = () => {
             className={styles.name}
             value={dateOfBirth}
             onChange={({ target }) => setDateOfBirth(target?.value)}
+            required
           />
 
           <label className={styles.label}>Gender:</label>
@@ -107,6 +111,7 @@ const Edit = () => {
             className={styles.name}
             value={gender}
             onChange={({ target }) => setGender(target?.value)}
+            required
           />
 
           <label className={styles.label}>Department:</label>
@@ -117,6 +122,7 @@ const Edit = () => {
             className={styles.name}
             value={department}
             onChange={({ target }) => setDepartment(target?.value)}
+            required
           />
 
           <div className={styles.btn}>

@@ -2,7 +2,7 @@ import styles from "./dashboard.module.css";
 import { useAuth } from "../context/AuthContext";
 import { useState, useEffect } from "react";
 import { db } from "../lib/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 
 import Link from "next/link";
 import AdminUpdate from "./adminUpdate";
@@ -21,19 +21,10 @@ const Dashboard = () => {
     })();
   }, []);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const colRef = collection(db, "Users");
-  //     const Snapshot = await getDocs(colRef);
-  //     const docs = Snapshot.docs.map((doc) => {
-  //       const data = doc.data();
-
-  //       data.id = doc.id;
-  //       return data;
-  //     });
-  //     setUsers(docs);
-  //   })();
-  // }, []);
+  const deleteAccount = async (e) => {
+    const res = await deleteDoc(doc(db, "Users", e.userId));
+    window.location.reload();
+  };
 
   return (
     <SidebarLayout>
@@ -59,7 +50,12 @@ const Dashboard = () => {
                   <button className={styles.button}>
                     <AdminUpdate />
                   </button>
-                  <button className={styles.button1}>Delete</button>
+                  <button
+                    onClick={() => deleteAccount(u)}
+                    className={styles.delete}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             );
