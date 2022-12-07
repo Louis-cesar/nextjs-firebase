@@ -4,6 +4,8 @@ import { AuthContextProvider } from "../context/AuthContext";
 import "../styles/globals.css";
 import Protected from "../comps/protected";
 import { ToastContainer } from "react-toastify";
+import Login from "./login";
+import AuthRoute from "../comps/AuthRoute";
 
 const noAthRequired = ["/login", "/signup"];
 
@@ -14,7 +16,9 @@ function MyApp({ Component, pageProps }) {
       <Navbar />
 
       {noAthRequired.includes(router.pathname) ? (
-        <Component {...pageProps} />
+        <AuthRoute>
+          <Component {...pageProps} />
+        </AuthRoute>
       ) : (
         <Protected>
           <Component {...pageProps} />

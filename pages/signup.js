@@ -2,6 +2,10 @@ import styles from "./signup.module.css";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import { useState } from "react";
+//toast
+import { ToastContainer } from "react-toastify";
+import { cusToastSuccess, cusToastError } from "../lib/cusToast";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signin = () => {
   const router = useRouter();
@@ -13,13 +17,29 @@ const Signin = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    // check if user has entered email and password
+    if (data.email === "") return cusToastError("Please enter your email");
+    if (data.password === "")
+      return cusToastError("Please enter your password");
+
     try {
       await signup(data.email, data.password);
+      if (user) {
+      }
+      cusToastSuccess("SignUp successful");
       router.push("/profile");
     } catch (error) {
-      console.log(error);
+      switch (error.code) {
+        // connection error
+        case "auth/network-request-failed":
+          cusToastError("Connection error");
+          break;
+        // default
+        default:
+          cusToastError("Something went wrong");
+          break;
+      }
     }
-    console.log(data);
   };
 
   return (
@@ -52,6 +72,7 @@ const Signin = () => {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };

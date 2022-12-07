@@ -17,9 +17,11 @@ const Navbar = () => {
         <ul className={styles.list}>
           {user ? (
             <>
-              <Link href="/dashboard">
-                <li>Admin</li>
-              </Link>
+              {user.isAdmin && (
+                <Link href="/dashboard">
+                  <li>Admin</li>
+                </Link>
+              )}
               <div className={styles.email}>{user?.email}</div>
               <Link
                 href={"/login"}

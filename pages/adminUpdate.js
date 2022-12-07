@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./admin.module.css";
 import Modal from "react-modal";
 import { doc, updateDoc, deleteDoc } from "firebase/firestore";
@@ -10,19 +10,20 @@ const customStyles = {
     background: "transparent",
   },
 };
-const AdminUpdate = () => {
+const AdminUpdate = ({ userId }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [fullName, setfullName] = useState("");
   const [department, setDepartment] = useState("");
-  const [radio, setRadio] = useState("");
+  const [isUpdate, setIsUpdate] = useState(false);
 
   const { user } = useAuth();
 
   const submit = async (e) => {
-    const res = await updateDoc(doc(db, "Users", user.uid), {
+    const res = await updateDoc(doc(db, "Users", userId), {
       fullName: fullName,
       department: department,
     });
+
     console.log(res, db);
     window.location.reload();
   };
@@ -30,6 +31,22 @@ const AdminUpdate = () => {
   return (
     <div>
       <div className={styles.btnEmployee}>
+        {/* {isUpdate ? (
+          <button
+            onClick={() => setModalIsOpen(true)}
+            className={styles.updateProfile}
+          >
+            Update Profile
+          </button>
+        ) : (
+          <button
+            onClick={() => setModalIsOpen(true)}
+            className={styles.updateProfile}
+          >
+            Add Employee
+          </button>
+        )}
+      </div> */}
         <button onClick={() => setModalIsOpen(true)} className={styles.admin}>
           Edit
         </button>
@@ -70,28 +87,13 @@ const AdminUpdate = () => {
             onChange={({ target }) => setDepartment(target?.value)}
             required
           />
-          <label className={styles.status}>Status</label>
-          <input
-            type="radio"
-            name="Active"
-            value={radio}
-            onChange={({ target }) => setRadio(target?.value)}
-            required
-          ></input>
-          <input
-            type="radio"
-            name="Not Active"
-            value={radio}
-            onChange={({ target }) => setRadio(target?.value)}
-            required
-          ></input>
 
           <div className={styles.btn}>
             <button
               className={styles.btnClose}
               onClick={() => setModalIsOpen(false)}
             >
-              Close
+              Cancel
             </button>
 
             <button type="submit" className={styles.btnsave}>

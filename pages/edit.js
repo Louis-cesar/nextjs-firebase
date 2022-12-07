@@ -130,7 +130,7 @@ const Edit = () => {
               className={styles.btnClose}
               onClick={() => setModalIsOpen(false)}
             >
-              Close
+              Cancel
             </button>
 
             <button type="submit" className={styles.btnsave}>

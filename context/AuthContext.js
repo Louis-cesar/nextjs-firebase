@@ -33,6 +33,7 @@ export const AuthContextProvider = ({ children }) => {
             dateOfBirth: userDoc.dateOfBirth,
             gender: userDoc.gender,
             department: userDoc.department,
+            isAdmin: userDoc.isAdmin,
           });
         });
       } else {

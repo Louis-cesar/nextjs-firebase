@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { db } from "../lib/firebase";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 
-import Link from "next/link";
 import AdminUpdate from "./adminUpdate";
 import SidebarLayout from "../comps/sidebarLayout";
 
@@ -48,7 +47,7 @@ const Dashboard = () => {
                 <div className={styles.item}>{u.email}</div>
                 <div className={styles.btn}>
                   <button className={styles.button}>
-                    <AdminUpdate />
+                    <AdminUpdate userId={u.userId} />
                   </button>
                   <button
                     onClick={() => deleteAccount(u)}
