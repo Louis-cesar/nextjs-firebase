@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { useState, useEffect } from "react";
 import { db } from "../lib/firebase";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-
+import AdminUpdateTask from "./AdminUpdateTask";
 import AdminUpdate from "./adminUpdate";
 import SidebarLayout from "../comps/sidebarLayout";
 
@@ -48,6 +48,9 @@ const Dashboard = () => {
                 <div className={styles.btn}>
                   <button className={styles.button}>
                     <AdminUpdate userId={u.userId} />
+                  </button>
+                  <button className={styles.button}>
+                    <AdminUpdateTask userId={u.userId} />
                   </button>
                   <button
                     onClick={() => deleteAccount(u)}

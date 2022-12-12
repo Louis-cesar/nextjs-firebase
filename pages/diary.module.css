@@ -7,3 +7,12 @@
   color: white;
   font-size: 2rem;
 }
+.header {
+  height: 100vh;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

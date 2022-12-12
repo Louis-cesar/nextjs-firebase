@@ -1,37 +1,43 @@
 import { useEffect, useState } from "react";
 import styles from "./admin.module.css";
 import Modal from "react-modal";
-import { doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../lib/firebase";
-import { useAuth } from "../context/AuthContext";
 
 const customStyles = {
   overlay: {
     background: "transparent",
   },
 };
-const AdminUpdate = ({ userId }) => {
+const AdminUpdateTask = ({ userId }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [fullName, setfullName] = useState("");
-  const [department, setDepartment] = useState("");
+  const [comments, setComments] = useState("");
+  const [task, setTask] = useState([]);
 
-  const { user } = useAuth();
+  console.log("task", task);
 
   const submit = async (e) => {
-    const res = await updateDoc(doc(db, "Users", userId), {
-      fullName: fullName,
-      department: department,
+    const res = await addDoc(collection(db, userId), {
+      comments: comments,
     });
 
     console.log(res, db);
     window.location.reload();
   };
 
+  useEffect(() => {
+    (async () => {
+      const tasksRef = await getDocs(collection(db, userId));
+      const tasksSnap = tasksRef.docs.map((u) => u.data());
+      setTask(tasksSnap);
+    })();
+  }, []);
+
   return (
     <div>
       <div className={styles.btnEmployee}>
         <button onClick={() => setModalIsOpen(true)} className={styles.admin}>
-          Edit
+          Update
         </button>
       </div>
       <Modal
@@ -41,7 +47,16 @@ const AdminUpdate = ({ userId }) => {
         onRequestClose={() => setModalIsOpen(false)}
         arialHideApp={true}
       >
-        <div>Edit Employee</div>
+        <div>
+          {task?.map((u, i) => {
+            return (
+              <div key={i}>
+                <p>{u.comments}</p>
+              </div>
+            );
+          })}
+          <h3>Task Employee</h3>
+        </div>
         <form
           className={styles.form}
           onSubmit={(e) => {
@@ -49,26 +64,11 @@ const AdminUpdate = ({ userId }) => {
             submit();
           }}
         >
-          <label>Full Name</label>
+          <label>Comments</label>
           <input
-            type="text"
-            name="name"
-            placeholder="Enter FullName"
-            className={styles.name}
-            value={fullName}
-            onChange={({ target }) => setfullName(target?.value)}
-            required
-          />
-
-          <label className={styles.label}>Department:</label>
-          <input
-            type="text"
-            name="contact"
-            placeholder="Enter Department"
-            className={styles.name}
-            value={department}
-            onChange={({ target }) => setDepartment(target?.value)}
-            required
+            placeholder="Enter your Task here"
+            value={comments}
+            onChange={({ target }) => setComments(target?.value)}
           />
 
           <div className={styles.btn}>
@@ -89,4 +89,4 @@ const AdminUpdate = ({ userId }) => {
   );
 };
 
-export default AdminUpdate;
+export default AdminUpdateTask;
