@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import styles from "./admin.module.css";
+import styles from "./adminUpdate.module.css";
 import Modal from "react-modal";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../lib/firebase";
 
 const customStyles = {
@@ -17,8 +17,9 @@ const AdminUpdateTask = ({ userId }) => {
   console.log("task", task);
 
   const submit = async (e) => {
-    const res = await addDoc(collection(db, userId), {
+    const res = await addDoc(collection(db, "Tasks"), {
       comments: comments,
+      userRef: `users/${userId}`,
     });
 
     console.log(res, db);
@@ -27,7 +28,11 @@ const AdminUpdateTask = ({ userId }) => {
 
   useEffect(() => {
     (async () => {
-      const tasksRef = await getDocs(collection(db, userId));
+      const q = query(
+        collection(db, "Tasks"),
+        where("userRef", "==", `users/${userId}`)
+      );
+      const tasksRef = await getDocs(q);
       const tasksSnap = tasksRef.docs.map((u) => u.data());
       setTask(tasksSnap);
     })();
@@ -47,15 +52,19 @@ const AdminUpdateTask = ({ userId }) => {
         onRequestClose={() => setModalIsOpen(false)}
         arialHideApp={true}
       >
-        <div>
+        <h3>Task Employee</h3>
+        <div className={styles.maintable}>
           {task?.map((u, i) => {
             return (
-              <div key={i}>
-                <p>{u.comments}</p>
+              <div key={i} className={styles.table}>
+                <table className={styles.table1}>
+                  <tr>
+                    <td>{u.comments}</td>
+                  </tr>
+                </table>
               </div>
             );
           })}
-          <h3>Task Employee</h3>
         </div>
         <form
           className={styles.form}
@@ -65,7 +74,7 @@ const AdminUpdateTask = ({ userId }) => {
           }}
         >
           <label>Comments</label>
-          <input
+          <textarea
             placeholder="Enter your Task here"
             value={comments}
             onChange={({ target }) => setComments(target?.value)}
