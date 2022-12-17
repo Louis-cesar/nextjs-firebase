@@ -2,17 +2,21 @@
   margin: 10px;
 }
 
-.admin {
+.btnEdit {
   background-color: #373737;
-  outline: none;
+  color: white;
   border: none;
+  outline: none;
+  padding: 10px;
+  width: 50px;
+  border-radius: 10px;
   cursor: pointer;
-  opacity: 0.5;
 }
-.btnDelete {
-  background: none;
-  color: red;
-  margin: 8px;
+
+.btnEdit:hover {
+  background-color: goldenrod;
+  color: black;
+  box-shadow: 0 0 5px 0 goldenrod;
 }
 
 .custom {

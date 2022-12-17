@@ -29,11 +29,10 @@ const AdminUpdate = ({ userId }) => {
 
   return (
     <div>
-      <div className={styles.btnEmployee}>
-        <button onClick={() => setModalIsOpen(true)} className={styles.admin}>
-          Edit
-        </button>
-      </div>
+      <button onClick={() => setModalIsOpen(true)} className={styles.btnEdit}>
+        Edit
+      </button>
+
       <Modal
         isOpen={modalIsOpen}
         className={styles.custom}

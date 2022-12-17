@@ -16,7 +16,7 @@ const Diary = ({ userId }) => {
     (async () => {
       const q = query(
         collection(db, "Tasks"),
-        where("userRef", "==", `users/${user.uid}`)
+        where("userRef", "==", `users/${user?.uid}`)
       );
       const tasksRef = await getDocs(q);
       const tasksSnap = tasksRef.docs.map((u) => u.data());
@@ -28,11 +28,19 @@ const Diary = ({ userId }) => {
       {task?.map((u, i) => {
         return (
           <div className={styles.listItem} key={i}>
-            <div className={styles.header}>{u.comments}</div>
+            <table className={styles.table}>
+              <tr className={styles.tr1}>
+                <th>Date/Time</th>
+                <th>Task</th>
+              </tr>
+              <tr>
+                <td>January</td>
+                <td>{u.comments}</td>
+              </tr>
+            </table>
           </div>
         );
       })}
-      <div className={styles.header}>hello</div>
     </SidebarLayout>
   );
 };

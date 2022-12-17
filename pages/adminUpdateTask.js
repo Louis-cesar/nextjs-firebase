@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import styles from "./adminUpdate.module.css";
 import Modal from "react-modal";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  query,
+  serverTimestamp,
+  where,
+} from "firebase/firestore";
 import { db } from "../lib/firebase";
 
 const customStyles = {
@@ -20,6 +27,7 @@ const AdminUpdateTask = ({ userId }) => {
     const res = await addDoc(collection(db, "Tasks"), {
       comments: comments,
       userRef: `users/${userId}`,
+      timeStamp: serverTimestamp(),
     });
 
     console.log(res, db);
@@ -40,11 +48,10 @@ const AdminUpdateTask = ({ userId }) => {
 
   return (
     <div>
-      <div className={styles.btnEmployee}>
-        <button onClick={() => setModalIsOpen(true)} className={styles.admin}>
-          Update
-        </button>
-      </div>
+      <button onClick={() => setModalIsOpen(true)} className={styles.update}>
+        Update
+      </button>
+
       <Modal
         isOpen={modalIsOpen}
         className={styles.custom}
