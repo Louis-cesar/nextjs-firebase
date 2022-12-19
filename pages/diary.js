@@ -4,9 +4,14 @@ import { useAuth } from "../context/AuthContext";
 import { useState, useEffect } from "react";
 import { getDocs, collection, where, query } from "firebase/firestore";
 import { db } from "../lib/firebase";
-
+// import { Switch } from "antd";
 const Diary = ({ userId }) => {
   const [task, setTask] = useState([]);
+  const [BsToggleOn, setBsToggleOn] = useState(false);
+
+  const handleclick = () => {
+    BsToggleOn ? setBsToggleOn(false) : setBsToggleOn(true);
+  };
 
   const { user } = useAuth();
 
@@ -30,12 +35,14 @@ const Diary = ({ userId }) => {
           <div className={styles.listItem} key={i}>
             <table className={styles.table}>
               <tr className={styles.tr1}>
-                <th>Date/Time</th>
                 <th>Task</th>
+                <th>Date</th>
+                <th>Action</th>
               </tr>
               <tr>
-                <td>January</td>
                 <td>{u.comments}</td>
+                <td>{u.date}</td>
+                <td>{/* <Switch /> */}</td>
               </tr>
             </table>
           </div>

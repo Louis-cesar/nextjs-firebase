@@ -20,6 +20,7 @@ const AdminUpdateTask = ({ userId }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [comments, setComments] = useState("");
   const [task, setTask] = useState([]);
+  const [date, setDate] = useState("");
 
   console.log("task", task);
 
@@ -27,7 +28,7 @@ const AdminUpdateTask = ({ userId }) => {
     const res = await addDoc(collection(db, "Tasks"), {
       comments: comments,
       userRef: `users/${userId}`,
-      timeStamp: serverTimestamp(),
+      date: date,
     });
 
     console.log(res, db);
@@ -49,7 +50,7 @@ const AdminUpdateTask = ({ userId }) => {
   return (
     <div>
       <button onClick={() => setModalIsOpen(true)} className={styles.update}>
-        Update
+        Add
       </button>
 
       <Modal
@@ -67,6 +68,7 @@ const AdminUpdateTask = ({ userId }) => {
                 <table className={styles.table1}>
                   <tr>
                     <td>{u.comments}</td>
+                    <td>{u.date}</td>
                   </tr>
                 </table>
               </div>
@@ -86,7 +88,16 @@ const AdminUpdateTask = ({ userId }) => {
             value={comments}
             onChange={({ target }) => setComments(target?.value)}
           />
-
+          <label className={styles.label}>Date of Birth:</label>
+          <input
+            type="Date"
+            name="Date"
+            placeholder="Enter Date"
+            className={styles.name}
+            value={date}
+            onChange={({ target }) => setDate(target?.value)}
+            required
+          />
           <div className={styles.btn}>
             <button
               className={styles.btnClose}
