@@ -2,14 +2,22 @@ import styles from "./dashboard.module.css";
 import { useAuth } from "../context/AuthContext";
 import { useState, useEffect } from "react";
 import { db } from "../lib/firebase";
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import AdminUpdateTask from "./AdminUpdateTask";
 import AdminUpdate from "./adminUpdate";
 import SidebarLayout from "../comps/sidebarLayout";
+import AdminSwitch from "./adminSwitch";
 
 const Dashboard = () => {
   const { user } = useAuth();
   const [users, setUsers] = useState([]);
+
   console.log("users", users);
 
   useEffect(() => {
@@ -23,6 +31,13 @@ const Dashboard = () => {
   const deleteAccount = async (e) => {
     const res = await deleteDoc(doc(db, "Users", e.userId));
     window.location.reload();
+  };
+
+  const handleSwitch = async (userId, isAdmin) => {
+    const res = await updateDoc(doc(db, "Users", userId), {
+      isAdmin: isAdmin,
+    });
+    console.log("res", res);
   };
 
   return (
@@ -47,7 +62,13 @@ const Dashboard = () => {
                   <td className={styles.table}>{u.userId}</td>
                   <td className={styles.table}>{u.fullName}</td>
                   <td className={styles.table}>{u.department}</td>
-                  <td className={styles.table}>Active</td>
+                  <td className={styles.table}>
+                    <AdminSwitch
+                      userId={u.userId}
+                      isAdmin={u.isAdmin}
+                      handleSwitch={handleSwitch}
+                    />
+                  </td>
                   <td className={styles.table}>{u.email}</td>
                   <td className={styles.table}>
                     <button className={styles.button}>

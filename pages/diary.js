@@ -2,16 +2,19 @@ import styles from "./diary.module.css";
 import SidebarLayout from "../comps/sidebarLayout";
 import { useAuth } from "../context/AuthContext";
 import { useState, useEffect } from "react";
-import { getDocs, collection, where, query } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  where,
+  query,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "../lib/firebase";
-// import { Switch } from "antd";
+import DiarySwitch from "./diarySwitch";
+
 const Diary = ({ userId }) => {
   const [task, setTask] = useState([]);
-  const [BsToggleOn, setBsToggleOn] = useState(false);
-
-  const handleclick = () => {
-    BsToggleOn ? setBsToggleOn(false) : setBsToggleOn(true);
-  };
 
   const { user } = useAuth();
 
@@ -28,6 +31,14 @@ const Diary = ({ userId }) => {
       setTask(tasksSnap);
     })();
   }, []);
+
+  const handleSwitch = async (userId, isDone) => {
+    const res = await updateDoc(doc(db, "Tasks", userId), {
+      isDone: isDone,
+    });
+    console.log("res", res);
+  };
+
   return (
     <SidebarLayout>
       {task?.map((u, i) => {
@@ -42,7 +53,13 @@ const Diary = ({ userId }) => {
               <tr>
                 <td>{u.comments}</td>
                 <td>{u.date}</td>
-                <td>{/* <Switch /> */}</td>
+                <td>
+                  <DiarySwitch
+                    userId={u.userId}
+                    isDone={u.isDone}
+                    handleSwitch={handleSwitch}
+                  />
+                </td>
               </tr>
             </table>
           </div>

@@ -29,6 +29,7 @@ const AdminUpdateTask = ({ userId }) => {
       comments: comments,
       userRef: `users/${userId}`,
       date: date,
+      isDone: false,
     });
 
     console.log(res, db);
