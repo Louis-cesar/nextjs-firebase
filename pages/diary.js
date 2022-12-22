@@ -27,16 +27,19 @@ const Diary = ({ userId }) => {
         where("userRef", "==", `users/${user?.uid}`)
       );
       const tasksRef = await getDocs(q);
-      const tasksSnap = tasksRef.docs.map((u) => u.data());
+      const tasksSnap = tasksRef.docs.map((u) => {
+        const obj = u.data();
+        obj.id = u.id;
+        return obj;
+      });
       setTask(tasksSnap);
     })();
   }, []);
 
-  const handleSwitch = async (userId, isDone) => {
-    const res = await updateDoc(doc(db, "Tasks", userId), {
-      isDone: isDone,
+  const handleSwitch = async (id, value) => {
+    await updateDoc(doc(db, "Tasks", id), {
+      isDone: value,
     });
-    console.log("res", res);
   };
 
   return (
@@ -55,7 +58,7 @@ const Diary = ({ userId }) => {
                 <td>{u.date}</td>
                 <td>
                   <DiarySwitch
-                    userId={u.userId}
+                    id={u.id}
                     isDone={u.isDone}
                     handleSwitch={handleSwitch}
                   />

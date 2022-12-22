@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Switch from "@mui/material/Switch";
 
-const DiarySwitch = ({ userId, isDone, handleSwitch }) => {
+const DiarySwitch = ({ id, isDone, handleSwitch }) => {
   const [done, setDone] = useState(isDone);
 
   const handleDiary = async (event) => {
     setDone(event.target.done);
-    handleSwitch(userId, event.target.done);
+    handleSwitch(id, event.target.done);
   };
 
   return (
