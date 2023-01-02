@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth, db } from "../lib/firebase";
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
@@ -64,8 +65,14 @@ export const AuthContextProvider = ({ children }) => {
     return result.user;
   };
 
+  const forgotPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, signup, logout, login }}>
+    <AuthContext.Provider
+      value={{ user, signup, logout, login, forgotPassword }}
+    >
       {loading ? null : children}
     </AuthContext.Provider>
   );

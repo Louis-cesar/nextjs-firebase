@@ -38,7 +38,7 @@ const Diary = ({ userId }) => {
 
   const handleSwitch = async (id, value) => {
     await updateDoc(doc(db, "Tasks", id), {
-      isDone: value,
+      done: value,
     });
   };
 
@@ -59,7 +59,7 @@ const Diary = ({ userId }) => {
                 <td>
                   <DiarySwitch
                     id={u.id}
-                    isDone={u.isDone}
+                    done={u.done}
                     handleSwitch={handleSwitch}
                   />
                 </td>

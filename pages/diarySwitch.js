@@ -1,18 +1,18 @@
 import { useState } from "react";
 import Switch from "@mui/material/Switch";
 
-const DiarySwitch = ({ id, isDone, handleSwitch }) => {
-  const [done, setDone] = useState(isDone);
+const DiarySwitch = ({ id, done, handleSwitch }) => {
+  const [checked, setChecked] = useState(done);
 
   const handleDiary = async (event) => {
-    setDone(event.target.done);
-    handleSwitch(id, event.target.done);
+    setChecked(event.target.checked);
+    handleSwitch(id, event.target.checked);
   };
 
   return (
     <>
       <Switch
-        checked={done}
+        checked={checked}
         onChange={handleDiary}
         inputProps={{ "aria-label": "controlled" }}
       />

@@ -7,10 +7,11 @@ import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { cusToastSuccess, cusToastError } from "../lib/cusToast";
 import "react-toastify/dist/ReactToastify.css";
+import { async } from "@firebase/util";
 
 const Login = () => {
   const router = useRouter();
-  const { login } = useAuth();
+  const { login, forgotPassword } = useAuth();
   const [data, setData] = useState({ email: "", password: "" });
 
   const handleLogin = async (e) => {
@@ -51,6 +52,16 @@ const Login = () => {
     }
   };
 
+  const forgotHandler = async () => {
+    try {
+      const result = await forgotPassword(data.email);
+      console.log("email sent");
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <form className={styles.form}>
@@ -81,6 +92,7 @@ const Login = () => {
             <p className={styles.forgot}>Forgot Password?</p>
           </div>
         </div>
+        <div onClick={forgotHandler}>Forgot Password</div>
       </form>
       <ToastContainer />
     </div>
