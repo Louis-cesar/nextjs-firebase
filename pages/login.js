@@ -2,6 +2,7 @@ import styles from "./login.module.css";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
+import Link from "next/link";
 
 //toast
 import { ToastContainer } from "react-toastify";
@@ -52,15 +53,15 @@ const Login = () => {
     }
   };
 
-  const forgotHandler = async () => {
-    try {
-      const result = await forgotPassword(data.email);
-      console.log("email sent");
-      return result;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const forgotHandler = async () => {
+  //   try {
+  //     const result = await forgotPassword(data.email);
+  //     console.log("email sent");
+  //     return result;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className={styles.container}>
@@ -89,10 +90,11 @@ const Login = () => {
             Login
           </button>
           <div className={styles.forgotBtn}>
-            <p className={styles.forgot}>Forgot Password?</p>
+            <Link href="/forgotPassword">
+              <div className={styles.forgot}>Forgot Password</div>
+            </Link>
           </div>
         </div>
-        <div onClick={forgotHandler}>Forgot Password</div>
       </form>
       <ToastContainer />
     </div>

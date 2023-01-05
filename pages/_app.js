@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 import Login from "./login";
 import AuthRoute from "../comps/AuthRoute";
 
-const noAthRequired = ["/login", "/signup"];
+const noAthRequired = ["/login", "/signup", "/forgotPassword"];
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
