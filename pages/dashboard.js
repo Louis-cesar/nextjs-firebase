@@ -46,7 +46,7 @@ const Dashboard = () => {
         <h2 className={styles.admin}>Admin Dashboard</h2>
         <table className={styles.table}>
           <thead className={styles.thead}>
-            <tr>
+            <tr className={styles.tablerow}>
               <th className={styles.table}>User ID</th>
               <th className={styles.table}>Name</th>
               <th className={styles.table}>Department</th>

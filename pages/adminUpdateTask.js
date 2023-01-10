@@ -61,7 +61,7 @@ const AdminUpdateTask = ({ userId }) => {
         onRequestClose={() => setModalIsOpen(false)}
         arialHideApp={true}
       >
-        <h3>Task Employee</h3>
+        <h3 className={styles.h3}>Task Employee </h3>
         <div className={styles.maintable}>
           {task?.map((u, i) => {
             return (

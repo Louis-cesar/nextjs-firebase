@@ -84,6 +84,7 @@
 .btn:hover {
   opacity: 0.8;
   transition: 0.5s;
+  color: black;
 }
 .forgot {
   text-align: center;
@@ -105,8 +106,6 @@
   .email {
     margin-top: 30px;
   }
-
-  
 }
 
 @media screen and (max-width: 480px) {

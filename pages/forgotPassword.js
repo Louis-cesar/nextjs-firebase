@@ -1,4 +1,4 @@
-import styles from "./forgotPassword.module.css";
+import styles from "./forgotpassword.module.css";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/router";
@@ -23,26 +23,30 @@ const ForgotPassword = () => {
       console.log("email sent");
       return result;
     } catch (error) {
-      cusToastError("Something went wrong");
+      cusToastError("Please enter a valid email");
       console.log(error);
     }
   };
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>Forgot Password</h1>
-      <label>Enter your Email</label>
-      <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Email"
-        className={styles.email}
-        onChange={(e) => setData({ ...data, email: e.target.value })}
-      />
-      <button onClick={forgotHandler} className={styles.btn}>
-        Send Email
-      </button>
+      <div className={styles.forgot}>
+        <h1 className={styles.header}>Forgot Password</h1>
+        <div className={styles.container1}>
+          <label className={styles.label}>Enter your Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            className={styles.email}
+            onChange={(e) => setData({ ...data, email: e.target.value })}
+          />
+          <button onClick={forgotHandler} className={styles.btn}>
+            Send Email
+          </button>
+        </div>
+      </div>
       <ToastContainer />
     </div>
   );

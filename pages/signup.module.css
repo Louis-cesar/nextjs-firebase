@@ -84,6 +84,7 @@
 .btn:hover {
   opacity: 0.8;
   transition: 0.5s;
+  color: black;
 }
 .forgot {
   text-align: center;

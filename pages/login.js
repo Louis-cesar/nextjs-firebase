@@ -53,16 +53,6 @@ const Login = () => {
     }
   };
 
-  // const forgotHandler = async () => {
-  //   try {
-  //     const result = await forgotPassword(data.email);
-  //     console.log("email sent");
-  //     return result;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   return (
     <div className={styles.container}>
       <form className={styles.form}>
