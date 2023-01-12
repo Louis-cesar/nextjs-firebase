@@ -4,6 +4,8 @@ import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import Link from "next/link";
 
+import { FaEye } from "react-icons/fa";
+
 //toast
 import { ToastContainer } from "react-toastify";
 import { cusToastSuccess, cusToastError } from "../lib/cusToast";
@@ -14,6 +16,11 @@ const Login = () => {
   const router = useRouter();
   const { login, forgotPassword } = useAuth();
   const [data, setData] = useState({ email: "", password: "" });
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -55,37 +62,42 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
-      <form className={styles.form}>
-        <h1 className={styles.header1}>Login</h1>
-        <div className={styles.Label}>
-          <div className={styles.input}>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
-              className={styles.email}
-              onChange={(e) => setData({ ...data, email: e.target.value })}
-            />
+      <div className={styles.form}>
+        <form>
+          <h1 className={styles.header1}>Login</h1>
+          <div className={styles.Label}>
+            <div className={styles.input}>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                className={styles.email}
+                onChange={(e) => setData({ ...data, email: e.target.value })}
+              />
+            </div>
+            <div className={styles.wrapper}>
+              <input
+                name="password"
+                id="password"
+                placeholder="Password"
+                className={styles.password}
+                type={passwordShown ? "text" : "password"}
+                onChange={(e) => setData({ ...data, password: e.target.value })}
+              />
+              <FaEye className={styles.eye} onClick={togglePasswordVisiblity} />
+            </div>
+
+            <button type="submit" className={styles.btn} onClick={handleLogin}>
+              Login
+            </button>
           </div>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            className={styles.password}
-            onChange={(e) => setData({ ...data, password: e.target.value })}
-          />
-          <button type="submit" className={styles.btn} onClick={handleLogin}>
-            Login
-          </button>
-          <div className={styles.forgotBtn}>
-            <Link href="/forgotPassword">
-              <div className={styles.forgot}>Forgot Password</div>
-            </Link>
-          </div>
-        </div>
-      </form>
+          <Link href="/forgotPassword" className={styles.forgot}>
+            Forgot Password
+          </Link>
+        </form>
+      </div>
+
       <ToastContainer />
     </div>
   );
