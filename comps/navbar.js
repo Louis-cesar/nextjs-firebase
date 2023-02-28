@@ -14,6 +14,7 @@ const Navbar = () => {
             Tekswipe <span className={styles.color}>Company</span>
           </p>
         </Link>
+
         <ul className={styles.list}>
           {user ? (
             <>
@@ -38,9 +39,9 @@ const Navbar = () => {
               <Link href="/login">
                 <li>Login</li>
               </Link>
-              <Link href="/signup">
+              {/* <Link href="/signup">
                 <li>Sign Up</li>
-              </Link>
+              </Link> */}
             </>
           )}
         </ul>

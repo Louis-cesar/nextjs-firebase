@@ -1,5 +1,5 @@
 .container {
-  background-color: #111111;
+  background-color: #373737;
   height: 50px;
   width: 100%;
   color: white;
@@ -24,7 +24,6 @@
   display: flex;
   align-items: center;
   list-style: none;
-
   padding: 0;
   margin-right: 30px;
 }
@@ -39,14 +38,21 @@
   color: goldenrod;
 }
 
-@media all and (max-width: 800px) {
-  .container {
-    width: 100%;
+@media screen and (max-width: 768px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-}
 
-@media all and (min-width: 375px) {
-  .container {
-    width: 100%;
+  .list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  .list li {
+    display: none;
   }
 }

@@ -58,7 +58,7 @@ const Dashboard = () => {
           <tbody className={styles.tbody}>
             {users?.map((u, i) => {
               return (
-                <tr key={i}>
+                <tr key={i} className={styles.trdata}>
                   <td className={styles.table}>{u.userId}</td>
                   <td className={styles.table}>{u.fullName}</td>
                   <td className={styles.table}>{u.department}</td>

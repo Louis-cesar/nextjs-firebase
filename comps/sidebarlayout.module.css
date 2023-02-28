@@ -18,3 +18,42 @@
   height: 100vh;
   padding-top: 0;
 }
+
+@media screen and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 100%;
+    grid-gap: 0px;
+  }
+  .grid1 {
+    display: none;
+  }
+  .grid2 {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: 100%;
+    grid-gap: 0px;
+  }
+  .grid1 {
+    display: none;
+  }
+  .grid2 {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .grid {
+    grid-template-columns: 100%;
+    grid-gap: 0px;
+  }
+  .grid1 {
+    display: none;
+  }
+  .grid2 {
+    margin-top: 0;
+  }
+}

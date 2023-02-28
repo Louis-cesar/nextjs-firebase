@@ -6,8 +6,10 @@ const Sidebar = () => {
     <div>
       {sidebarData.map((item, index) => {
         return (
-          <li key={index} className={styles.list}>
-            <Link href={item.path}>{item.title}</Link>
+          <li key={index} className={styles.list1}>
+            <Link className={styles.list} href={item.path}>
+              {item.title}
+            </Link>
           </li>
         );
       })}

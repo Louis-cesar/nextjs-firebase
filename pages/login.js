@@ -2,6 +2,7 @@ import styles from "./login.module.css";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { FaEye } from "react-icons/fa";
@@ -64,6 +65,12 @@ const Login = () => {
     <div className={styles.container}>
       <div className={styles.form}>
         <form>
+          {/* <Image
+            src="/img/logo dark bg.png"
+            width={200}
+            height={200}
+            className={styles.logo}
+          /> */}
           <h1 className={styles.header1}>Login</h1>
           <div className={styles.Label}>
             <div className={styles.input}>
@@ -92,9 +99,14 @@ const Login = () => {
               Login
             </button>
           </div>
-          <Link href="/forgotPassword" className={styles.forgot}>
-            Forgot Password
-          </Link>
+          <div className={styles.btn1}>
+            <Link href="/forgotPassword" className={styles.forgot}>
+              Forgot Password
+            </Link>
+            <Link href="/signup" className={styles.signup}>
+              Sign Up Here!
+            </Link>
+          </div>
         </form>
       </div>
 
