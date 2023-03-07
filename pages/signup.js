@@ -87,7 +87,7 @@ const Signin = () => {
             <div>
               <button
                 type="submit"
-                className={styles.button}
+                className={styles.btn}
                 onClick={handleSignup}
               >
                 Sign Up
@@ -102,11 +102,3 @@ const Signin = () => {
 };
 
 export default Signin;
-
-//create a media query for signup page
-
-// Path: styles\signup.module.css
-// Compare this snippet from styles\login.module.css:
-//
-
-// Path: styles\signup.module.css
