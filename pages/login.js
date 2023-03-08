@@ -65,6 +65,12 @@ const Login = () => {
     <div className={styles.container}>
       <div className={styles.form}>
         <form>
+          <Image
+            src="/img/logo dark bg.png"
+            width={150}
+            height={150}
+            className={styles.logo}
+          />
           <h1 className={styles.header1}>Login</h1>
           <div className={styles.Label}>
             <div className={styles.input}>

@@ -43,7 +43,7 @@ const Edit = () => {
         onClick={() => setModalIsOpen(true)}
         className={styles.updateProfile}
       >
-        Update Profile
+        Edit Profile
       </button>
 
       <Modal
