@@ -1,5 +1,5 @@
 .container {
-  background-color: #373737;
+  background-color: #111111;
   height: 50px;
   width: 100%;
   color: white;
@@ -14,7 +14,9 @@
 .header {
   font-size: 1rem;
   font-weight: bold;
-  margin-left: 20px;
+  margin-left: 50px;
+
+  text-align: center;
 }
 .email {
   margin-left: 20px;

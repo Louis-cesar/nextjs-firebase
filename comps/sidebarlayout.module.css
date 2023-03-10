@@ -1,22 +1,12 @@
 .grid {
   display: grid;
-  grid-template-columns: 11% 84%;
-  grid-gap: 10px;
+  grid-template-columns: auto 1fr auto;
 }
 
 .grid1 {
-  background-color: #222222;
-  padding: 5px;
+  background-color: #15171c;
   height: 100vh;
-  padding-top: 15px;
-  margin-top: 35px;
-}
-
-.grid2 {
-  background-color: #373737;
-  padding: 0px;
-  height: 100vh;
-  padding-top: 0;
+  width: 0;
 }
 
 @media screen and (max-width: 1024px) {

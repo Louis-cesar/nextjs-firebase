@@ -1,22 +1,98 @@
-.list1 {
-  list-style: none;
-}
-
-.list {
-  padding: 8px;
-  margin: 15px;
-  background-color: #222222;
+.navbar {
+  background: #15171c;
+  height: 80px;
   display: flex;
-  text-align: center;
-  padding-top: 5px;
-  border-radius: 5px;
-  color: white;
+  justify-content: flex-start;
+  align-items: center;
 }
-
+.navbarToggle {
+  background: #15171c;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navMenu {
+  background: #15171c;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+}
+.navMenuActive {
+  background: #15171c;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: 350ms;
+}
+.navMenuItems {
+  width: 100%;
+  background-color: #111111;
+}
+.navbarToggle {
+  background: #111111;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.menuBars {
+  position: fixed;
+  top: 15px;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  color: #fff;
+  z-index: 100;
+  cursor: pointer;
+}
+.menuBars:hover {
+  color: #373737;
+  transition: 200ms ease-in;
+}
+.navText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  list-style: none;
+  height: 60px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #f8f8f8;
+  border-bottom: 1px solid #f8f8f8;
+}
+.navText:hover {
+  color: #f8f8f8;
+  background: #252831;
+  transition: 200ms ease-in;
+}
+.list {
+  color: #f8f8f8;
+  text-decoration: none;
+}
+.list1 {
+  color: #f8f8f8;
+  text-decoration: none;
+  list-style: none;
+  margin: 15px;
+  font-size: 1.2rem;
+}
 .list:hover {
-  background-color: goldenrod;
-  background-size: 100% 100%;
-  color: #222222;
-  border-radius: 5px;
-  transition: 0.5s;
+  color: #f8f8f8;
+  background: goldenrod;
+  transition: 200ms ease;
+  border-radius: 10px;
+  padding: 5px;
 }
